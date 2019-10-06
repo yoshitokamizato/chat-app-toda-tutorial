@@ -1,3 +1,17 @@
-<li class="list-group-item">
-  <p><%= message.content %></p>
-</li>
+<div class="message">
+  <div class="line-bc"><!--①LINE会話全体を囲う-->
+    <!--②左コメント始-->
+    <div class="balloon6">
+      <div class="faceicon">
+        <%= image_tag("zenigame") %>
+      </div>
+      <div class="chatting">
+        <div class="says">
+          <p><%= message.content %></p>
+        </div>
+      </div>
+    </div>
+    <!--②/左コメント終-->
+
+  </div><!--/①LINE会話終了-->
+</div>
