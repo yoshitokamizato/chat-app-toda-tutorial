@@ -8,14 +8,9 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = Message.create!(content: data['message'])
-    template = ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message})
+    puts "テスト：#{data['current_user_id']}"
+    message = Message.create!(content: data['message'], user_id: data['current_user_id'])
+    template = ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message, current_user_id: data['current_user_id']})
     ActionCable.server.broadcast 'room_channel', template
-
-    puts <<~EOS
-
-    speakを実行
-
-    EOS
   end
 end

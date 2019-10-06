@@ -15,20 +15,23 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     messages.scrollTop = messages.scrollHeight;
   },
 
-  speak: function(content) {
-    return this.perform('speak', {message: content});
+  speak: function(content, current_user_id) {
+    console.log(current_user_id)
+
+    return this.perform('speak', {message: content, current_user_id: current_user_id});
   }
 });
 
 
 document.addEventListener('DOMContentLoaded', function() {
   const input = document.getElementById('chat-input')
+  const current_user_id = document.getElementById('current-user-id')
 
   input.addEventListener('keypress', function(e) {
     var key = e.which || e.keyCode;
     if (key === 13) { // 13 is enter
       const content = input.value
-      App.room.speak(content)
+      App.room.speak(content, current_user_id.value)
       input.value = ''
     }
   })
