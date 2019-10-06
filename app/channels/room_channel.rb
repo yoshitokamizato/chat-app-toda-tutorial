@@ -1,6 +1,5 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    puts "subscribedの実行"
     stream_from "room_channel"
   end
 
@@ -9,8 +8,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    puts "speakの実行"
-    message = Message.create!(content: data['message'])
+    message = Message.create!(content: data['message'], user_id: data['current_user_id'])
     template = ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message})
     ActionCable.server.broadcast 'room_channel', template
   end
