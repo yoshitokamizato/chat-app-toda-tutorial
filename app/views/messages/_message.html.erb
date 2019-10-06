@@ -1,17 +1,23 @@
 <div class="message">
-  <div class="line-bc"><!--①LINE会話全体を囲う-->
-    <!--②左コメント始-->
-    <div class="balloon6">
-      <div class="faceicon">
-        <%= image_tag("zenigame") %>
-      </div>
-      <div class="chatting">
-        <div class="says">
-          <p><%= message.content %></p>
+  <div class="line-bc">
+    <% if current_user.id == message.user_id %>
+      <div class="balloon6">
+        <div class="faceicon">
+          <%= image_tag("zenigame") %>
+        </div>
+        <div class="chatting">
+          <div class="user-name">
+            <%= message.user.name %>
+          </div>
+          <div class="says">
+            <p><%= message.content %></p>
+          </div>
         </div>
       </div>
-    </div>
-    <!--②/左コメント終-->
-
-  </div><!--/①LINE会話終了-->
+    <% else %>
+      <div class="mycomment">
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
 </div>

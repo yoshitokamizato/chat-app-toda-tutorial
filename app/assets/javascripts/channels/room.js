@@ -23,7 +23,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
 
 document.addEventListener('DOMContentLoaded', function() {
   const input = document.getElementById('chat-input')
-  const button = document.getElementById('button')
+
   input.addEventListener('keypress', function(e) {
     var key = e.which || e.keyCode;
     if (key === 13) { // 13 is enter

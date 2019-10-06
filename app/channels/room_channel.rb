@@ -11,5 +11,11 @@ class RoomChannel < ApplicationCable::Channel
     message = Message.create!(content: data['message'])
     template = ApplicationController.renderer.render(partial: 'messages/message', locals: {message: message})
     ActionCable.server.broadcast 'room_channel', template
+
+    puts <<~EOS
+
+    speakを実行
+
+    EOS
   end
 end
