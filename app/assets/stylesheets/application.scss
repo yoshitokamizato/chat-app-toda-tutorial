@@ -16,6 +16,11 @@
  @import "bootstrap";
 
 
+.container {
+  width: 500px;
+}
+
+
 #chat-container {
   #messages {
     height: 500px;

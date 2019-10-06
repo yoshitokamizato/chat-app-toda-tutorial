@@ -16,8 +16,6 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   speak: function(content, current_user_id) {
-    console.log(current_user_id)
-
     return this.perform('speak', {message: content, current_user_id: current_user_id});
   }
 });

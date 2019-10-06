@@ -1,13 +1,10 @@
 <section id="chat-container">
-
   <div id="messages">
-    <% @messages.each do |message| %>
-      <%= render :partial => "messages/message", locals: {message: message, current_user_id: current_user.id} %>
-    <% end %>
+    <%= render @messages %>
   </div>
 
-  <form>
-    <input type="text" id="chat-input" class="chat-form"/>
+  <form class="chat-form">
+    <input type="text" id="chat-input"/>
     <input type="hidden" id="current-user-id" value="<%= current_user.id %>">
   </form>
 </section>
